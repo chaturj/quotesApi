@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 2,
+  "agentName": "quoteApi",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus5.actions.githubusercontent.com/xraSsfsHWykTwcbLDaEXdMKmWIzanRgkbDX4e8rPtJavXnxmZ6/",
+  "gitHubUrl": "https://github.com/chaturj/quotesApi",
+  "workFolder": "quoteApi"
+}
