@@ -50,10 +50,11 @@ export default async function listQuotes(req, res) {
                 items: paginatedItems,
             });
         }else if (tags) {
-            const result = await quotesArray.filter(function(e, i) {
-                return e['tags'] == tags
-            })
-            console.log('tags:', tags);
+            const filteredQuotes = quotesArray.filter(val => val.tags.includes(tags));
+            /*await quotesArray.filter(function(e, i) {
+                            return e['tags'] == tags
+                        })*/
+            console.log('tags:', tags, filteredQuotes);
             const page = parseInt(req.query.page, 10) || 1;
             const limit = parseInt(req.query.limit, 10) || 10;
             
@@ -62,15 +63,15 @@ export default async function listQuotes(req, res) {
             const endIndex = page * limit;
             
             // Paginated items
-            const paginatedItems = result.slice(startIndex, endIndex);
+            const paginatedItems = filteredQuotes.slice(startIndex, endIndex);
             
             // Total pages
-            const totalPages = Math.ceil(result.length / limit);
+            const totalPages = Math.ceil(filteredQuotes.length / limit);
             
             res.json({
                 page,
                 limit,
-                totalItems: result.length,
+                totalItems: filteredQuotes.length,
                 totalPages,
                 items: paginatedItems,
             });
