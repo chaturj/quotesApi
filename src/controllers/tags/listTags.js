@@ -19,7 +19,7 @@ export default async function listTags(req, res, next) {
     const tagArraydata = await fs.promises.readFile(tagFilePath, 'utf8');
     var parse = Object.values(JSON.parse(tagArraydata));
     const tagArray = parse.sortBy('name');
-    res.json(tagArray)
+    res.json({tags:tagArray});
   } catch (error) {
     return next(error)
   }
